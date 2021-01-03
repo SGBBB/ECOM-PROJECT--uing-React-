@@ -3,7 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 
 import { signout, isAuthenticated } from "../auth/helper";
 
-const currentTab = (history, path) => {
+
+const currentTab = (history, path) => {  //injecting suitable colors(i.e. graan colour ) to link when at a current link
   if (history.location.pathname === path) {
     return { color: "#2ecc72" };
   } else {
@@ -24,7 +25,8 @@ const Menu = ({ history, path }) => {
             Home
           </Link>
         </li>
-        <li className="nav-item">
+   {isAuthenticated() && (      //I myself let this Cart visible to only authenticated user
+          <li className="nav-item">
           <Link
             style={currentTab(history, "/cart")}
             className="nav-link"
@@ -33,6 +35,7 @@ const Menu = ({ history, path }) => {
             Cart
           </Link>
         </li>
+   )}
         {isAuthenticated() && (
           <li className="nav-item">
             <Link

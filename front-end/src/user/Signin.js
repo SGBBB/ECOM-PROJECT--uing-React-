@@ -13,9 +13,11 @@ const Signin = () => {
     success: false,
     loading: false,
     didRedirect: false,
+    responsePreviousSession:false
   });
-  const { name, email, password, error, success, loading, didRedirect } =
+  const { name, email, password, error, success, loading, didRedirect,responsePreviousSession } =
     values;
+    
 
   const handleChange = (name) =>
     (event) => {
@@ -30,24 +32,38 @@ const Signin = () => {
       .then((data) => {
         console.log("DATA", data);
         if (data.token) {
-          //let sessionToken = data.token;
+          //let sessionToken = data.token;          
           authenticate(data, () => {
             console.log("TOKKEN ADDED");
             setValues({
               ...values,
-              didRedirect: true,
+              didRedirect: true,  //...values ,means load up all teh values
             });
           });
         } else {
           setValues({
             ...values,
-            loading: false,
+            loading: false,  //
           });
+          //Checking whether previous session exists
+          if (data.error == "Previous session exists!") { setValues({...values,responsePreviousSession:true}) }
+          
+
+          
+
+
         }
       })
       .catch((e) => console.log(e));
   };
 
+ 
+  const methodPreviousSessionExists = () => {
+    
+    return (
+      values.responsePreviousSession &&<div className="alert alert-danger  col-md-6 offset-sm-3 text-left">Previous Session Exists</div>
+    )
+  }
   const performRedirect = () => {
     if (isAuthenticated()) {
       return <Redirect to="/" />;
@@ -60,7 +76,7 @@ const Signin = () => {
         <div className="alert alert-info">
           <h2>Loading...</h2>
         </div>
-      )
+      )   //In js the second operand corresponding to && operator will return truthy value since we are just returning something.
     );
   };
 
@@ -138,6 +154,7 @@ const Signin = () => {
   return (
     <Base title="Welcome to sign in page" description="A tshirt store">
       {loadingMessage()}
+      {methodPreviousSessionExists()}
 
       {signInForm()}
       <p className="text-center">

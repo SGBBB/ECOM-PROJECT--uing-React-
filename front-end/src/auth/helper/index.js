@@ -29,13 +29,12 @@ export const signin = (user) => {
   // formData.append('email', email)
   // formData.append('password', password)
 
-  for (var key of formData.keys()) {
-    console.log("MYKEY: ", key);
-  }
+  // for (var key of formData.keys()) {
+  //   console.log("MYKEY: ", key);
+  // }
 
   return fetch(`${API}user/login/`, {
     method: "POST",
-
     body: formData,
   })
     .then((response) => {

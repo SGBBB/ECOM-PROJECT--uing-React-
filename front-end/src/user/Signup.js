@@ -12,7 +12,7 @@ const Signup = () => {
     success: false,
   });
 
-  const { name, email, password, error, success } = values;
+  const { name, email, password, error, success } = values; //destruturing the props 
 
   const handleChange = (name) =>
     (event) => {
@@ -51,7 +51,7 @@ const Signup = () => {
         <div className="col-md-6 offset-sm-3 text-left">
           <div
             className="alert alert-success"
-            style={{ display: success ? "" : "none" }}
+            style={{ display: success ? "" : "none" }} //setting display property according to success boolen variable
           >
             New account created successfully. Please <Link
               to="/signin"
