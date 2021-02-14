@@ -48,12 +48,12 @@ const PaymentB = ({
   const getAmount = () => {
     let amount = 0;
     products.map((p) => {
-      amount = amount + parseInt(p.price);
+      amount = amount + parseInt(p.price); //converting amount into integer
     });
     return amount;
   };
   const onPurchase = () => {
-    setInfo({ loading: true });
+    setInfo({ loading: true }); //if loading is true throw an alert box hey payment is processsing 
     let nonce;
     let getNonce = info.instance.requestPaymentMethod().then((data) => {
       console.log("MYDATA", data);
@@ -72,7 +72,7 @@ const PaymentB = ({
                 return <Redirect to="/" />;
               });
             }
-          } else {
+          } else { //In else case we are placing the order
             setInfo({ ...info, success: response.success, loading: false });
             console.log("PAYMENT SUCCESS");
 
@@ -122,7 +122,7 @@ const PaymentB = ({
   const showbtnDropIn = () => {
     return (
       <div>
-        {info.clientToken !== null && products.length > 0
+        {info.clientToken !== null && products.length > 0 //ensuring we have client token,some product
           ? (
             <div>
               <DropIn
@@ -139,7 +139,7 @@ const PaymentB = ({
             </div>
           )
           : (
-            <h3>Please login first or add something in cart</h3>
+            <h3>Please login first or add something in cart</h3> //can use some links to redirect user to login
           )}
       </div>
     );
