@@ -14,14 +14,15 @@ NOTE:Django follows MVT Architecture.
 
 
 ecom is the website .
-Following are the app used inside the application:
+Following are the app used inside the Web-app:
 1.Category
 2.Products
 3. User
 4. Order
 
 
-CATEGORY: (Categories like summer collection ,winter collection )
+CATEGORY: (Categories like summer collection ,winter collection ):
+
 Model:
 1. Name 
 2. DEscription
@@ -32,6 +33,7 @@ Model:
 2. Price
 3. Description
 4. isInStock
+
 
 Order :
 Model:
