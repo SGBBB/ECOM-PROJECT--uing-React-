@@ -11,3 +11,31 @@ For Backend:
 8.  Initially you wont be able to login to admi panel for that purpose u just create a new super userusing cmd "python manage.py createsuperuser". 
 
 NOTE:Django follows MVT Architecture.
+
+
+ecom is the website .
+Following are the app used inside the application:
+1.Category
+2.Products
+3. User
+4. Order
+
+
+CATEGORY: (Categories like summer collection ,winter collection )
+Model:
+1. Name 
+2. DEscription
+
+Products :
+Model:
+1.Category (linked to Category table via foreign key relation)
+2. Price
+3. Description
+4. isInStock
+
+Order :
+Model:
+1. user(linked to user model via foreign key)
+2. product_names
+3. total_amount
+4. total_products
